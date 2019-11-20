@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>抽屉效果</title>
+	<style type="text/css">
+		.ctboxs {
+			width: 590px;/* 60*4+590 */
+			height: 710px;
+			position: relative;
+			overflow: hidden;
+			border:5px solid green;
+		}
+		.ctboxs .ctbox {
+			width:590px;/* 60+590 */
+			height: 530px;
+			position: absolute;
+			top:0;
+		}
+		.ctboxs .ct1 {
+			top: 0;
+			transition:3s;
+		}
+		.ctboxs .ct2 {
+			top: 530px;
+			transition:3s;
+		}
+		.ctboxs .ct3 {
+			top: 590px;
+			transition:3s;
+		}
+		.ctboxs .ct4 {
+			top: 650px;
+			transition:3s;
+		}
+		.ctboxs .ctbox .title {
+			font-size: 22px;
+			line-height: 60px;
+			text-align: center;
+			height: 60px;
+			color:#fff;
+			cursor:pointer;
+		}
+		.ctboxs .ct1 .title{
+			background: rgb(0,0,127);
+		}
+		.ctboxs .ct2 .title{
+			background: rgb(238,136,0);
+		}
+		.ctboxs .ct3 .title{
+			background:green;
+		}
+		.ctboxs .ct4 .title{
+			background:red;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="ct1" class="ctboxs">
+		<!-- div.ctbox*4>.title+.content>img[src=images/$$$.jpg][alt=$] -->
+		<div class="ctbox ct1">
+			<div class="title">交通行业</div>
+			<div class="content"><img src="images/1.jpg" alt="1"></div>
+		</div>
+		<div class="ctbox ct2">
+			<div class="title">司法行业</div>
+			<div class="content"><img src="images/2.jpg" alt="2"></div>
+		</div>
+		<div class="ctbox ct3">
+			<div class="title">政府相关行业</div>
+			<div class="content"><img src="images/3.jpg" alt="3"></div>
+		</div>
+		<div class="ctbox ct4">
+			<div class="title">其他行业</div>
+			<div class="content"><img src="images/4.jpg" alt="4"></div>
+		</div>
+	</div>
+	<!-- <script src="js40.js"></script> -->
+	<script>
+		var ctboxs=document.getElementById('ct1');
+		var ctbox=ctboxs.getElementsByClassName('ctbox');
+		var title=ctboxs.getElementsByClassName('title');
+		var titleHeight=60;
+		var contentHeight=470;
+		for(var i=0;i<title.length;i++){
+			title[i].index=i;
+			title[i].onclick=function(){
+				for(var i=0;i<ctbox.length;i++){
+					if(i<=this.index){
+						ctbox[i].style.top=i*titleHeight+"px";
+					}else{
+					ctbox[i].style.top=i*titleHeight+contentHeight+"px";
+					}
+				}
+			}
+		 }
+	</script>
+</body>
+</html>
